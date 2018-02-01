@@ -1,7 +1,7 @@
-app.controller("clockController", 
+app.controller("clockController",
 	function($scope, $http, $interval) {
-		
-		$scope.utc = 
+
+		$scope.utc =
 		  {tz: 'UTC',
 		  time: '',
 		  offset: 0};
@@ -10,14 +10,13 @@ app.controller("clockController",
 		$http.get('/api/time')
 			 .then(function (res) {
 				$scope.utc.time =res;
-				console.log(res)
 			 })
 			 .catch(function (res) {
 			 	console.log("err retrieving utc time from node server");
 			 	$scope.utc.time =0;
 			 });
 
-		//destroy timer 
+		//destroy timer
 		$scope.$on('$destroy', function() {
 			 	console.log("interval destroyed by controller");
 			 	$interval.cancel($scope.myPromise);
@@ -31,8 +30,8 @@ app.directive('clock', ['$interval', function($interval){
 
 		//d3 initial and static donut chart elements here
 		var el = element[0];
-		
-		var data = scope.data;  
+
+		var data = scope.data;
 		var width = 155;
 		var height = 155;
 		var min = Math.min(width,height);
@@ -49,7 +48,7 @@ app.directive('clock', ['$interval', function($interval){
 
 		var secondScale = d3.scale.linear()
 		  .range([0,354])
-		  .domain([0,59]);    
+		  .domain([0,59]);
 
 
 		  //$scope.timezones[1]
@@ -101,11 +100,11 @@ app.directive('clock', ['$interval', function($interval){
 
 		//use proper digest cycle here?
 		scope.myPromise = $interval(function() {
-	
+
 		var initialHours = parseInt(scope.data.time.data.substring(0,2))+scope.data.offset;
 		var initialMinutes = parseInt(scope.data.time.data.substring(3,5));
 		var initialSeconds = parseInt(scope.data.time.data.substring(6,8));
-	  
+
 		  fields[0].previous = fields[0].value; fields[0].value = initialHours+(initialMinutes+Math.floor((initialSeconds+secondsElapsed)/60))/60;//continuously moving hour hand rather than snapping
 		  fields[1].previous = fields[1].value; fields[1].value = initialMinutes+Math.floor((initialSeconds+secondsElapsed)/60);
 		  fields[2].previous = fields[2].value; fields[2].value = (initialSeconds+secondsElapsed)%60;
@@ -135,8 +134,8 @@ app.directive('clock', ['$interval', function($interval){
 			dynamics.selectAll('#hours').style('stroke-width', 0.044*min + 'px');
 			secondsElapsed++;
 			}, 1000);
-		
-		
+
+
 		function arcTween(b) {
 		  var i = d3.interpolate({value: b.previous}, b);
 		  return function(t) {
@@ -152,7 +151,7 @@ app.directive('clock', ['$interval', function($interval){
 		      return arc(i(t));
 		  };
 		}
-	
+
 	}
 	return {
 		restrict: 'E',   //when adding new element, 'A' when updating existing

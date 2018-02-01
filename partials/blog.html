@@ -3,17 +3,17 @@
 				<div class="container">
 					<div class="row row-eq-height" id="b{{$index}}" my-scrollable>
 						<div class="col-xs-6 blogwrap">
-							<h2>{{blog.title}} 
+							<h2>{{blog.title}}
 							</h2>
-							<span> 
-								<div class="material-icon author"></div> {{blog.author}} 
-								<div class="material-icon date"></div> {{blog.date | date: 'MM-dd-yyyy hh:mm:ss'}} 
-								<div class="material-icon category" ng-if="blog.category"></div> {{blog.category}} 
+							<span>
+								<div class="material-icon author"></div> {{blog.author}}
+								<div class="material-icon date"></div> {{blog.date | date: 'MM-dd-yyyy hh:mm:ss'}}
+								<div class="material-icon category" ng-if="blog.category"></div> {{blog.category}}
 								<!--<div class="material-icon comments" ng-init="commentCount = getCommentCount(blog._id, $index)">  </div> {{ blog.commentCount }}  -->
 							</span>
-							<span class="keyholder">  
+							<span class="keyholder">
 								<div class="btn btn-default keyword-small" ng-repeat="keyword in blog.keywords track by $index">#{{keyword}}
-									</div>  
+									</div>
 							</span>
 							<p>{{blog.preview | limitTo:250}} ... </p>
 						</div>
@@ -21,9 +21,9 @@
 							<blockquote ng-if="blog.quote" ng-bind-html="blog.quote"></blockquote>
 							<a class="thumbnail" ng-show="blog.thumbnailUrl">
 								<img src="{{blog.thumbnailUrl}}" alt="">
-							</a>	
+							</a>
 						</div>
-						
+
 					</div>
 					<a ui-sref="blog-detail({ data : blog })"> Read More </a>	
 				</div>
@@ -31,7 +31,6 @@
 	</div>
 
 	<my-splash-scroll></my-splash-scroll>
-	 
-	
-</div>
 
+
+</div>

@@ -38,7 +38,7 @@ app.controller('myBlogDetailController',
 			console.log($scope.postObject);
 			$http({
 			        //url: 'http://functional-aesthetics.rhcloud.com/api/comments',
-			        url: 'http://ec2-18-217-222-38.us-east-2.compute.amazonaws.com/api/comments',
+			        url: 'http://ec2-13-58-24-227.us-east-2.compute.amazonaws.com/api/comments',
 			        method: "POST",
 			        data: $scope.postObject,
 			        //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -60,7 +60,7 @@ app.controller('myBlogDetailController',
 		$scope.getComments = function () {
 			$http({
 			        //url: 'http://functional-aesthetics.rhcloud.com/api/blogs/comments/' + $scope.data._id,
-			        url: 'http://ec2-18-217-222-38.us-east-2.compute.amazonaws.com/api/blogs/comments/' + $scope.data._id,
+			        url: 'http://ec2-13-58-24-227.us-east-2.compute.amazonaws.com/api/blogs/comments/' + $scope.data._id,
 			        method: "GET"
 			        //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			    })
