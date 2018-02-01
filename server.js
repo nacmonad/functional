@@ -19,8 +19,8 @@ var express = require('express'),
 
 //environment vars
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
+app.set('port', 3000);
+//app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 app.set('view engine', 'html');
 
 /*  Configure nunjucks to work with express */
@@ -369,7 +369,7 @@ app.get('/barsrgb', function(req, res) {
 
 
 //LISTEN
-app.listen(app.get('port'), app.get('ip'), function() {
+app.listen(app.get('port'),  function() {
 	console.log('Server instantiated at ' + Date.now());
-    console.log('Listening @' + app.get('ip') + ' on port '+ app.get('port'));
+    console.log('Listening on port '+ app.get('port'));
 });

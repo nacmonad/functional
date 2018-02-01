@@ -9,16 +9,17 @@ app.controller('myBlogController',
 		CommentModel.getComments();
 
 		$scope.getBlogs = function(callback) {
-			$http.get('api/blogs').
-			    success(function(data, status, headers, config) {
+			$http.get('api/blogs')
+			    .then(function(data, status, headers, config) {
 			      $scope.blogs = data;
+			      console.log(data)
 			      //strip html tags and create previews
-					$scope.blogs.forEach((e,i)=>{
+					Array.from($scope.blogs).forEach((e,i)=>{
 						$scope.blogs[i].preview = e.content.replace($scope.regex, " ").replace(/\s\s+/g, ' ');
 					});
 					callback();
-			    }).
-			    error(function(err) {
+			    })
+		 	    .catch(function(err) {
 			      console.log(err);
 			    });
 			    
@@ -29,7 +30,7 @@ app.controller('myBlogController',
 	  		var matches = [];
 	  		
 			if($scope.blogs) {
-				$scope.blogs.forEach((e,i)=> {
+				Array.from($scope.blogs).forEach((e,i)=> {
 					matches = e.content.match(img_regex);
 					if(matches) { $scope.blogs[i].thumbnailUrl = matches[1];}
 				});
@@ -41,11 +42,13 @@ app.controller('myBlogController',
 
 		$scope.getCommentCount = function(id, index) {
 			var count = 0;
-			CommentModel.comments.forEach((e,i) => {
+			Array.from(CommentModel.comments).forEach((e,i) => {
 				if (e.discussion_id == id) {
 					count++;
 				}
-			$scope.blogs[index].commentCount = count;
+			console.log($scope)
+			console.log("Index : " + index);
+			$scope.blogs.data[index].commentCount = count;
 			});
 			
 		}

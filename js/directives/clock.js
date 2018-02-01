@@ -8,10 +8,11 @@ app.controller("clockController",
 
 
 		$http.get('/api/time')
-			 .success(function (res) {
+			 .then(function (res) {
 				$scope.utc.time =res;
+				console.log(res)
 			 })
-			 .error(function (res) {
+			 .catch(function (res) {
 			 	console.log("err retrieving utc time from node server");
 			 	$scope.utc.time =0;
 			 });
@@ -100,10 +101,10 @@ app.directive('clock', ['$interval', function($interval){
 
 		//use proper digest cycle here?
 		scope.myPromise = $interval(function() {
-
-		var initialHours = parseInt(scope.data.time.substring(0,2))+scope.data.offset;
-		var initialMinutes = parseInt(scope.data.time.substring(3,5));
-		var initialSeconds = parseInt(scope.data.time.substring(6,8));
+	
+		var initialHours = parseInt(scope.data.time.data.substring(0,2))+scope.data.offset;
+		var initialMinutes = parseInt(scope.data.time.data.substring(3,5));
+		var initialSeconds = parseInt(scope.data.time.data.substring(6,8));
 	  
 		  fields[0].previous = fields[0].value; fields[0].value = initialHours+(initialMinutes+Math.floor((initialSeconds+secondsElapsed)/60))/60;//continuously moving hour hand rather than snapping
 		  fields[1].previous = fields[1].value; fields[1].value = initialMinutes+Math.floor((initialSeconds+secondsElapsed)/60);
