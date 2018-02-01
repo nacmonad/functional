@@ -1,0 +1,9 @@
+<div class="container" ng-style="{'height':50+'px'}">
+	<button class="btn btn-sm btn-default" ng-click ="toggleVisible()" ng-style="{'float':'left'}"> {{buttonMsg}} </button>
+	<div class = "contactPanel" ng-show="isVisible" >
+		<p>Hello<p>
+		<p> <input type="text" ng-model="data.firstName" select-all-on-focus>Select all on focus</p> 
+		<p ><input type="text" ng-model="data.lastName"><span my-hi-lite>Normal input, highlite span</span> </p>
+	
+	</div>
+</div>

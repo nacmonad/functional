@@ -1,0 +1,74 @@
+<div id = "row0" ng-style="{height:100+'vh'}" ng-cloak my-scrollable>
+	<!-- <div class = "vid-overlay"></div> -->
+
+	<video ng-if="!MobileCheck.check()" loop muted autoplay ng-style="{opacity:0.8}">
+		<source src="video/stock00.mp4" type="video/mp4" >
+	</video>
+
+	<div id="heroText" class="text-center" ng-style="
+				{opacity:1,
+				'z-index':1,
+			     color:'white',
+			     'min-width':100+'%',
+			     'min-height':100+'%',
+			     'margin-left':auto,
+			     'margin-right':auto
+			   	  }" my-scrollable>
+			   	<img id="hyperLogo" src="img/hyper.svg" alt="">
+				<h1>functional aesthetics</h1>
+				<h4>webdesign • tutoring</h4>
+	</div>
+
+</div>
+
+
+    <div class="parent">
+      <div class="item" id="l1" my-scrollable><h2>web</h2></div>
+      <div class="item" id="r1">
+			    <ul>
+							<li>JavaScript</li>
+							<li>React/Redux, React Native</li>
+							<li>Angular JS</li>
+							<li>D3.JS</li>
+							<li>Node JS</li>
+							<li>GraphQL + SQL + NoSQL </li>
+					</ul>
+      </div>
+    </div>
+
+    <div class="parent" id="parent2">
+      <div class="item" id="l2">
+      	<ul class="pull-right">
+				<li> Maths &amp; Sciences</li>
+				<li> WebDev</li>
+				<li> Ghost-writing</li>
+			</ul>
+		</div>
+      <div class="item" id="r2" my-scrollable><h2>tutor</h2></div>
+    </div>
+
+    <div class="parent">
+      <div class="item" id="row3" my-scrollable>
+      	<div class="col-sm-10 col-md-8">
+      		<h1>about</h1>
+		      	<div id="circleimg"></div>
+					<p>This page serves as a means of contact and a place to demo javascript/webdev experiments.
+						 I primarily develop with Javascript, but often find the desire &amp; need to perform scientific computations, computer vision,
+						 machine-learning tasks with Python.  I am interested in parallel computation, IoT and AR/VR. <a href="http://bl.ocks.org/nacmonad">Data visualizations gists</a> and
+						 <a href="http://github.com/nacmonad">github repos</a>.  Also some fun noodles in the <a ui-sref="test">test space</a>.</p>
+					<p>Co-founder and developper of the <a href="http://synapsegl.network">SynapseGL</a> mobile, distributed computational network.</p>
+
+		</div>
+      </div>
+    </div>
+
+
+<div id = "row4" ng-style="{'height': 100 +'vh'}" my-scrollable>
+	<div class="container">
+		<div id ="block4" class="col-xs-12">
+				<h2><a href="mailto:shorlacher@gmx.com">shorlacher@gmx.com</a></h2>
+		</div>
+	</div>
+</div>
+<!-- ng-style="{'color': homeActive == 0 ? '#363636' : '#fefefe', 'opacity':0.8 }" controller="sidebarController" -->
+<my-splash-scroll></my-splash-scroll>

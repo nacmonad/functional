@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CRUDApp" >
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel='stylesheet' href='/node_modules/textangular/dist/textAngular.css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/crud.css">
+	
+
+</head>
+<!-- this passes the server rendered user object into angular using ng-init -->
+<body ng-controller="mainController" ng-init="user = {
+		firstName : '{$ user.firstName $}',
+		lastName : '{$ user.lastName $}', 
+		date : '{$ user.date $}', 
+		type : {$ user.type $}
+	}">
+
+	<div class="container">  <!-- nunjucks injects here -->
+		<p>Hello</p>
+		<p> {$ user.firstName $} {$ user.lastName $} </p>
+		<p> {$ user.date $} </p>
+		<p> {$ user.password $} </p>
+		<p> {$ user.type $} </p>
+		<h4 class ="text-center text-danger bg-danger" ng-if="userTypeCheck({$ user.type $})" ng-style="{width:'110px'}">Hello Admin!</h4>
+		<a href="mailto:{$ user.email $}"> {$ user.email $} </a><br><br>
+		<a href = "/auth/logout">Logout</a>
+	</div>	
+	<hr>
+	<div class = "container alert alert-danger" ng-if="!userTypeCheck({$ user.type $})" > That account does not have blogging privaleges. Contact the admin for access.  But will add comment support.  </div>
+	<div class = "container alert alert-success" ng-if="userTypeCheck({$ user.type $})" > Welcome master Rustcity! </div>
+
+	<div class="container myForm" >
+
+		<input type="hidden" name="_csrf" value="{$ csrfToken $}">
+		{{ userEmail }}  <!-- now ng -->
+		<button class="btn btn-primary" ng-click="createBlog()">Blog</button>
+
+		<h4>Blog Objects</h4>
+		<table class="table table-striped table-hover">	
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Date</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="blog in blogs"> 
+				<td>{{blog._id}}</td>
+				<td>{{blog.title}}</td>
+				<td>{{blog.author}}</td>
+				<td>{{blog.date}}</td>
+				<td><button class="btn btn-sm btn-warning" ng-click="edit($index)">Edit</button><button class="btn btn-sm btn-danger" ng-click="deleteBlog($index)">Delete</button></td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="container myForm" >
+
+		<h4>Comments</h4>
+		<table class="table table-striped table-hover">	
+			<tr>
+				<th>ID</th>
+				<th>Author</th>
+				<th>Date</th>
+				<th>Preview</th>
+				<th>Slug</th>
+			</tr>
+			<tr ng-repeat="comment in comments"> 
+				<td>{{comment._id}}</td>
+				<td>{{comment.author}}</td>
+				<td>{{comment.posted}}</td>
+				<td>{{comment.comment | limitTo:100}} ... </td>
+				<td>{{comment.slug}}</td>
+				<td><button class="btn btn-sm btn-warning" ng-click="editComment($index)">Edit</button><button class="btn btn-sm btn-danger" ng-click="deleteComment($index)">Delete</button></td>
+			</tr>
+		</table>
+	</div>
+	
+
+
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-resource/angular-resource.js"></script>
+	<script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+	<script src="/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+	<script src='/node_modules/textangular/dist/textAngular-rangy.min.js'></script>
+	<script src='/node_modules/textangular/dist/textAngular-sanitize.min.js'></script>
+	<script src='/node_modules/textangular/dist/textAngular.min.js'></script>
+
+	<script src="/CRUDapp.js"></script>
+	<script src="/js/services/BlogService.js"></script>
+	<script src="/js/services/CommentService.js"></script>
+	<script src="/js/services/MobileCheckService.js"></script>
+</body>
+</html>

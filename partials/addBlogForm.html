@@ -1,0 +1,35 @@
+<i class="fa fa-times close-modal" aria-hidden="true" ng-click="cancel()"></i>
+<div class="container">
+	<h4>Add A New Blog</h4>
+	<div class="col-xs-12 col-sm-9 col-md-7 col-lg-6">
+		<label for="title">Title: </label>
+		<input class="form-control" type="text" name="title" ng-model="blog.title" ng-init="blog.title" ng-required="true">
+		<label for="title">Author: </label>
+		<input class="form-control" type="text" name="title" ng-model="blog.author" ng-init="blog.author" ng-required="true">
+		<label for="title">Category: </label>
+		<input class="form-control" type="text" name="title" ng-model="blog.category" ng-init="blog.category">
+		<text-angular ng-model="blog.content" ng-required="true"></text-angular>
+		<div>
+			<label for="quote">Blockquote: </label>
+			<input class="form-control" type="textarea" name="quote" ng-model="blog.quote" ng-init="blog.quote">
+		</div>
+
+		<table>
+			<tr>
+				<th>Keywords</th>
+				<th><input type="text" class="form-control" ng-model="newKeyword" placeholder="Add New Keyword"/></th>
+				<th><button class="btn btn-sm btn-success pull-right" ng-click="pushKeyword()"><span class="glyphicon glyphicon-plus"></span></button></th>
+			</tr>
+			<tr ng-repeat="keyword in blog.keywords track by $index">
+				<td><label for="keyword{{$index}}"> Keyword {{$index}}: </label></td>
+				<td><input class="form-control" name="keyword{{$index}}" type="text" ng-model="blog.keywords[$index]" ng-init="blog.keywords[$index]"></td>
+				<td><button class="btn btn-sm btn-danger pull-right" ng-click="removeKeyword($index)"><span class="glyphicon glyphicon-remove"></span></button></td>
+			</tr>
+			
+		</table>
+
+
+
+		<button class="btn btn-primary put-blog" ng-click="ok()">POST</button>
+	</div>
+</div>

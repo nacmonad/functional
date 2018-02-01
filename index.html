@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ui-router-styles>
+<head>
+	<meta charset="UTF-8">
+	<title>Functional Aesthetics</title>
+	<link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://raw.github.com/daneden/animate.css/master/animate.css">
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+	<link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:700,400' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/css/home.css">
+	<link rel="stylesheet" href="/css/blog.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="stylesheet" href="/css/test.css">
+</head>
+
+<body ng-keydown="keyToggleEvent($event)" ng-controller="sidebarController">
+	
+	<div class="page-wrap" ng-style= "{'background-color': homeActive == 0 ? '#fefefe' : '#363636' }">
+		<div class='page-content' ng-style=" {'padding-left': toggleOffset +'px'}" ui-view>
+			</script>
+		</div>
+		
+		<i id="toggleButton" ng-click="toggleMenu()" class="fa fa-chevron-left toggle" ng-style="{'left': toggleOffset+20+'px', 'color': homeActive == 0 ? '#363636' : '#fefefe', 'opacity':0.8 }"> </i>
+		
+		<div class="sidebar" ng-show="!bool" ng-include="'partials/sidebar.html'" ng-style= " { 'z-index':1 }"></div>
+	</div>
+
+	<script>
+		Object.defineProperty(HTMLVideoElement.prototype, 'playing', {
+			    get: function(){
+			        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+			    }
+			})	
+	</script>
+
+
+	<footer class ="footer" ng-include="'partials/footer.html'" ng-style="{'opacity': (bool ? 1:0) }"></footer>
+
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/node_modules/angular/angular.js"></script>
+	<script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+	<script src="/node_modules/ui-router/release/angular-ui-router.js"></script>
+	<script src="/node_modules/angular-ui-router-styles/ui-router-styles.js"></script>
+	<script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="/node_modules/angular-resource/angular-resource.js"></script>
+	<script src="/node_modules/jquery-smooth-scroll/jquery.smooth-scroll.js"></script>
+	<script src="/node_modules/d3/d3.js"></script>
+
+	<script src="/app.js"></script>
+	<script src="/js/services/MobileCheckService.js"></script>
+	<script src="/js/services/BlogService.js"></script>
+	<script src="/js/services/BlogModel.js"></script>
+	<script src="/js/services/CommentService.js"></script>
+	<script src="/js/services/CommentModel.js"></script>
+	<script src="/js/controllers/sidebarController.js"></script>
+	<script src="/js/controllers/myBlogController.js"></script>
+	<script src="/js/controllers/myBlogDetailController.js"></script>
+	<script src="/js/controllers/myHomeController.js"></script>
+	<script src="/js/directives/myScrollable.js"></script>
+	<script src="/js/directives/testDirectives.js"></script>
+	<script src="/js/directives/lazyScript.js"></script>
+	<script src="/js/controllers/myTestController.js"></script>
+
+	<script src="/js/directives/clock.js"></script>
+	
+	
+</body>
+</html>

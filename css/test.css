@@ -1,0 +1,22 @@
+
+.contactPanel {
+	display: block !important;
+	/* animation settings */
+	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+	transform:translateX(60px); /* instead of margin-left */
+}
+
+.contactPanel.ng-hide-remove,
+.contactPanel.ng-hide-add.ng-hide-add-active {	
+  transform: translateX(0px);
+  opacity:0;
+}
+
+.contactPanel.ng-hide-add,
+.contactPanel.ng-hide-remove.ng-hide-remove-active {
+  transform:translateX(60px);
+  opacity:1;
+}

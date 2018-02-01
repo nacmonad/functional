@@ -1,0 +1,138 @@
+<style>
+
+.sidebar {
+	/*background-color: rgba(54,54,54,0);*/
+	background-color: rgba(0,0,0,0.8);
+	position:fixed;
+	top: 0px;
+	left: 0px;
+	z-index:0;
+	width: 180px;
+	height:100%;
+	padding-top:20px;
+	/*border: solid chartreuse 1.5px;
+	border-radius:15px;*/
+	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+}
+
+
+.sidebar li a {
+	background: rgba(54,54,54,0) !important;
+	font-family: 'Fira Sans', sans-serif;
+	font-size: 16px ;
+	margin-bottom:10px;
+	color: rgba(255,255,255,0.8);
+	-webkit-font-smoothing:antialiased;
+	list-style-type: none ;
+	cursor:pointer ;
+	transition: ease-in-out 0.2s ;
+}
+.sidebar li a:hover{
+	color: rgba(255,255,255,1);
+	transition: ease-in-out 0.2s;
+}
+
+.sidebar li a:active{
+	background: #636363 !important;
+}
+
+#collapseButton {
+	font-family: 'Fira Sans', sans-serif;
+	font-size: 16px ;
+	margin-bottom:10px;
+	color: rgba(255,255,255,0.8);
+	-webkit-font-smoothing:antialiased ;
+	list-style-type: none ;
+	cursor:pointer ;
+	transition: ease-in-out 0.2s;
+	margin-left:15px;
+	padding-right:15px;
+}
+
+.sidebar.ng-hide-remove,
+.sidebar.ng-hide-add.ng-hide-add-active {
+	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+  transform: translateX(-180px);
+  display: block !important;
+}
+
+.sidebar.ng-hide-add,
+.sidebar.ng-hide-remove.ng-hide-remove-active {
+  transform:translateX(0px);
+  display: block !important;
+}
+
+.bottompiece {
+	position:absolute;
+	bottom: 10px;
+	margin-left:33px;
+	color: rgba(255,255,255,0.5);
+	font-size:20px;
+}
+.bottompiece i {
+	transition: ease-in-out 0.2s;
+}
+
+.bottompiece i:hover {
+	color:rgba(255,255,255,0.8);
+}
+
+.footer {
+	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+}
+
+.toggle {
+	position:fixed;
+	top:20px;
+	left:200px;
+	color: rgba(255,255,255,.8);
+	z-index:1;
+	text-decoration:none;
+	font-size:28px;
+	webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .5s;
+}
+
+.toggle:hover {
+	color: rgba(255,255,255,1);
+}
+
+
+
+</style>
+
+<ul class="nav">
+	<li ng-click="scrollTo('heroText')">
+		<a href="#" aria-expanded="false" ui-sref="home" ui-sref-active="active" >Home
+			<i class="fa fa-chevron-down pull-right" id="submenu1toggle" ng-click="toggleCollapse()" data-toggle="collapse" data-target="#submenu1"  ></i>
+		</a>
+	</li>
+
+	<ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1" ng-style="{'margin-left':20+'px'}" ui-sref="home">
+		<li><a ng-click="scrollTo('r1')">Services</a></li>
+		<li><a ng-click="scrollTo('row3')">About</a></li>
+		<li><a ng-click="scrollTo('row4')">Contact</a></li>
+	</ul>
+	<li ui-sref="blog" ui-sref-active="active" ><a href="#" >Blog</a></li>
+	<li><a href="#" >CV</a></li>
+	<li ui-sref="test" ui-sref-active="active" ><a href="#" >Test Space</a></li>
+</ul>
+<div ng-controller="clockController">
+<clock  data ="utc" ng-init="utc.offset=-5"></clock>
+</div>
+
+<!-- turn this into its own directive -->
+<div class="bottompiece">
+	<my-social-buttons></my-social-buttons>
+</div>

@@ -1,0 +1,44 @@
+<div class="content-wrapper">
+	<div class="container">
+
+			<div class="col-xs-8 blogwrap">
+				<h2>{{data.title}}</h2>
+				<h4>{{data.author}}</4>
+				<h6>{{data.date | date: 'MM-dd-yyyy hh:mm:ss'}}</h6>
+				<h6>{{data.category}}</h6>
+				<div ng-bind-html="data.content"></div>
+			</div>
+			<div class="col-xs-3 asidewrap">
+				<div class="btn btn-default keyword" ng-repeat="keyword in data.keywords track by $index">#{{keyword}}</div>
+				<blockquote ng-if="data.quote" ng-bind-html="data.quote"></blockquote>
+			</div>
+	</div>
+	<hr class="blog-hr">
+	<div class="container">
+		<div class="col-md-6">
+			<h4>COMMENTS</h4>
+			<i id="textarea-toggler" class="glyphicon glyphicon-plus" ng-click="showTextArea()" ng-model="comment"  ></i>
+			<form class="comment-post" ng-show="showText" >
+				<textarea name="" id="" cols="30" rows="1" ng-focus="focused()" ng-blur="blurred()" ng-model="author">			
+				</textarea>
+				<textarea name="" id="" cols="30" rows="10" ng-focus="focused()" ng-blur="blurred()" ng-model="comment">
+					
+				</textarea>
+				<button class="btn btn-default" ng-click="post()">POST</button>
+			</form>
+
+			<ul class="comments">
+				<li ng-repeat="comment in comments">
+					<b>{{comment.author}} (id:{{ comment._id.substring(comment._id.length-5) }} )  {{comment.posted | date: 'MM-dd-yyyy hh:mm:ss'}} </b> :
+					<p>{{comment.comment}}</p>
+					
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<a ui-sref="blog">Back</a>
+	</div>
+
+</div>

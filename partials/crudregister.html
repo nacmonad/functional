@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CRUD Registration</title>
+	<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/crud.css">
+</head>
+<body>
+
+	<div class = "container">
+		<h2>Register for CRUD Access</h2>
+		<h4>a.k.a ScottyCMS</h4>
+
+		<form class="login-form" method="post">
+		  	  <input type="hidden" name="_csrf" value="{$ csrfToken $}">
+			  <div class="input-group">
+			    <input name = "firstName" type="text">
+			    <label >Given Name</label>
+			  </div><br><br><br>
+
+			  <div class="input-group">
+			    <input name = "lastName" type="text">
+			    <label >Surname</label>
+			  </div><br><br><br>
+
+			  <div class="input-group">
+			    <input type="email" name = "email">
+			    <label for="email">Your Email Address</label>
+			  </div><br><br><br>
+
+			  <div class="input-group">
+			    <input name = "password" type="password">
+			    <label for="password">Your Password</label>
+			  </div><br><br><br>
+
+
+			  <input class="form-button" type="submit" value="Register" name='submit'>
+			  <input class="form-button" type="reset" value="Clear" name='reset'>
+		</form>
+	</div>
+	<script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/js/form/form-events.js"></script>
+</body>
+</html>
